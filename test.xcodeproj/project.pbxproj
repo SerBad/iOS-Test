@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBCDA24527A12C08004B8D6D /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = CBCDA24427A12C08004B8D6D /* Human.m */; };
 		CBD6EF44279FC880004BB31F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD6EF43279FC880004BB31F /* main.m */; };
-		CBD6EF54279FCABA004BB31F /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD6EF53279FCABA004BB31F /* MyClass.m */; };
+		CBD6EF5B279FF370004BB31F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = CBD6EF5A279FF370004BB31F /* Person.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +25,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CBCDA24327A12C08004B8D6D /* Human.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
+		CBCDA24427A12C08004B8D6D /* Human.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
 		CBD6EF40279FC880004BB31F /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBD6EF43279FC880004BB31F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CBD6EF53279FCABA004BB31F /* MyClass.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
-		CBD6EF55279FCB45004BB31F /* MyClass.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyClass.h; path = ../MyClass.h; sourceTree = "<group>"; };
+		CBD6EF59279FF370004BB31F /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		CBD6EF5A279FF370004BB31F /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +63,11 @@
 		CBD6EF42279FC880004BB31F /* test */ = {
 			isa = PBXGroup;
 			children = (
-				CBD6EF55279FCB45004BB31F /* MyClass.h */,
-				CBD6EF53279FCABA004BB31F /* MyClass.m */,
+				CBD6EF59279FF370004BB31F /* Person.h */,
+				CBD6EF5A279FF370004BB31F /* Person.m */,
 				CBD6EF43279FC880004BB31F /* main.m */,
+				CBCDA24327A12C08004B8D6D /* Human.h */,
+				CBCDA24427A12C08004B8D6D /* Human.m */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -124,7 +129,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CBD6EF54279FCABA004BB31F /* MyClass.m in Sources */,
+				CBCDA24527A12C08004B8D6D /* Human.m in Sources */,
+				CBD6EF5B279FF370004BB31F /* Person.m in Sources */,
 				CBD6EF44279FC880004BB31F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
