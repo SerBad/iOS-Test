@@ -46,9 +46,18 @@ int main(int argc, const char * argv[]) {
     
     //方括号，用于通知某个对象该去做什么，第一项是对象，其余部分是需要对象执行的操作
     Person *person = [Person new];
+    //以下方法和上面的方法等价
+    //Person *person = [[Person alloc]init];
 
     [person draw];
  
     NSLog(@"person %i %i  ", [person findAge:@"zhou"], [person findAge:@"wu"]  );
+    
+ 
+    NSError *error = nil;
+    NSStringEncoding encoding = NSUTF8StringEncoding;
+    NSString *string =  [[NSString alloc]initWithContentsOfFile:@"/Users/zhou/Documents/ios/test/test/words.txt" encoding:encoding error:&error];
+    NSLog(@"解析字段：%@ %@ ",string,error);
+    
     return 0;
 }

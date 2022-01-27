@@ -11,8 +11,8 @@
 
 - (id) init{
     NSLog(@"init");
-    self = [super init];
-    if (self) {
+    //需要这么做，保证返回的内容
+    if (self = [super init]) {
         age = 10;
     }
     return self;

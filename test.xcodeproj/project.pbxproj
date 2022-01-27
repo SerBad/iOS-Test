@@ -25,6 +25,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CB36FA4A27A23F7E004722B2 /* words.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = words.txt; sourceTree = "<group>"; };
 		CBCDA24327A12C08004B8D6D /* Human.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
 		CBCDA24427A12C08004B8D6D /* Human.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
 		CBD6EF40279FC880004BB31F /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +64,7 @@
 		CBD6EF42279FC880004BB31F /* test */ = {
 			isa = PBXGroup;
 			children = (
+				CB36FA4A27A23F7E004722B2 /* words.txt */,
 				CBD6EF59279FF370004BB31F /* Person.h */,
 				CBD6EF5A279FF370004BB31F /* Person.m */,
 				CBD6EF43279FC880004BB31F /* main.m */,
