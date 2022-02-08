@@ -58,36 +58,100 @@ void testBasicLanguage(void){
 void testFoundationMain(void){
 	NSError *error = nil;
 	NSStringEncoding encoding = NSUTF8StringEncoding;
+    //http://www.stats.gov.cn/tjsj/zxfb/202105/t20210510_1817180.html
 	NSString *string =  [[NSString alloc]initWithContentsOfFile:@"/Users/zhou/Documents/ios/test/test/words.txt" encoding:encoding error:&error];
 	NSLog(@"解析字段：%@ %@ ",string,error);
 
 	//方法三(正确，可打印emoji)
 	NSRange range;
-
+	NSMutableArray* array5 = [NSMutableArray arrayWithCapacity:1];
 	NSString* temp = [NSString new];
+	NSMutableArray* tempArray = [NSMutableArray arrayWithCapacity:1];
+
 	for(int i=0; i<string.length; i+=range.length) {
 		range = [string rangeOfComposedCharacterSequenceAtIndex:i];
 		NSString *s = [string substringWithRange:range];
-		temp = [temp stringByAppendingString:s];
-		NSLog(@"s--->%@",s);
+
+		//https://www.cnblogs.com/hecheng0314/p/4664175.html
+//		temp = [temp stringByAppendingString:[NSString stringWithFormat:@"%c",[string characterAtIndex:i]]];
+//        temp = [temp stringByAppendingFormat:@"%c",[string characterAtIndex:i]];
+
+		if([s isEqual:@"\n"]) {
+			if (tempArray.count>=4) {
+				[array5 addObject:[NSMutableArray arrayWithArray:tempArray] ];
+				temp = @"";
+				[tempArray removeAllObjects];
+			}
+
+			if (temp.length>0) {
+				[tempArray addObject:temp];
+				temp = @"";
+			}
+		} else {
+			if(![s isEqual:@"\n"]) {
+				temp = [temp stringByAppendingFormat:@"%@",s];
+			}
+		}
+
+//		NSLog(@"s--->%@",s);
+
 	}
-
-	NSLog(@"最终的结果： %@ ",temp);
-
+//    float floatValue = 0;
+//    NSLog(@"字符串转float %f", [@"1.1" floatValue]);
+    
+//	[array5 sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2){
+//        float floatValue1 = 0;
+//        float floatValue2 = 0;
+//        NSMutableArray* obj11 = obj1;
+//        NSMutableArray* obj22 = obj2;
+//        [[obj22 objectAtIndex:3] floatValue2];
+//        [[obj11 objectAtIndex:3] floatValue1];
+//		 return floatValue2>floatValue1;
+//    }];
+	for (int i = 0; i< array5.count; i++) {
+		NSLog(@"array5 %@", [array5[i] componentsJoinedByString:@"-"]);
+	}
 
 }
 
 void testArray(void){
+	//NSArray是Cocoa下面的类，只能存储Cocoa下面的对象，不能为nil
 	//NSArray的便利初始化
 	NSArray* array1 = [[NSArray alloc] initWithObjects:@"aaa", @"bbb", @"ccc", nil];
 	//NSArray的便利构造器
 	NSArray* array2 = [NSArray arrayWithObjects:@"111", @"222", @"333", nil];
+
+	NSArray* array3 = @[@"!!!", @"@@@", @"###" ];
+
 	for (int i = 0; i<array1.count; i++) {
 		NSLog(@"array1 %@", array1[i]);
 	}
+
 	for (int i = 0; i< array2.count; i++) {
 		NSLog(@"array2 %@", array2[i]);
 	}
+
+	for (int i = 0; i< array3.count; i++) {
+		NSLog(@"array3 %@", array3[i]);
+	}
+
+
+	NSString* string =[array3 componentsJoinedByString:@" :-) "];
+	NSLog(@"string %@",string);
+	NSArray* array4 = [string componentsSeparatedByString:@" :-) "];
+	for (int i = 0; i< array4.count; i++) {
+		NSLog(@"array4 %@", array4[i]);
+	}
+
+	//arrayWithCapacity只是个参考值，并不是最后的数量
+	NSMutableArray* array5 = [NSMutableArray arrayWithCapacity:1];
+	[array5 addObject:@"我是个可变的一号"];
+	[array5 insertObject:@"我是可变的老板" atIndex:0];
+	for (int i = 0; i< array5.count; i++) {
+		NSLog(@"array5 %@", array5[i]);
+	}
+
+
 }
 
 int main(int argc, const char * argv[]) {
@@ -98,7 +162,7 @@ int main(int argc, const char * argv[]) {
 
 //	testBasicLanguage();
 	testFoundationMain();
-//    testArray();
+//	testArray();
 	return 0;
 }
 
