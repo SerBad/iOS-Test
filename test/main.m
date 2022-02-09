@@ -58,9 +58,9 @@ void testBasicLanguage(void){
 void testFoundationMain(void){
 	NSError *error = nil;
 	NSStringEncoding encoding = NSUTF8StringEncoding;
-    //http://www.stats.gov.cn/tjsj/zxfb/202105/t20210510_1817180.html
+	//http://www.stats.gov.cn/tjsj/zxfb/202105/t20210510_1817180.html
 	NSString *string =  [[NSString alloc]initWithContentsOfFile:@"/Users/zhou/Documents/ios/test/test/words.txt" encoding:encoding error:&error];
-	NSLog(@"解析字段：%@ %@ ",string,error);
+//	NSLog(@"解析字段：%@ %@ ",string,error);
 
 	//方法三(正确，可打印emoji)
 	NSRange range;
@@ -96,18 +96,21 @@ void testFoundationMain(void){
 //		NSLog(@"s--->%@",s);
 
 	}
-//    float floatValue = 0;
-//    NSLog(@"字符串转float %f", [@"1.1" floatValue]);
-    
-//	[array5 sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult(id obj1, id obj2){
-//        float floatValue1 = 0;
-//        float floatValue2 = 0;
-//        NSMutableArray* obj11 = obj1;
-//        NSMutableArray* obj22 = obj2;
-//        [[obj22 objectAtIndex:3] floatValue2];
-//        [[obj11 objectAtIndex:3] floatValue1];
-//		 return floatValue2>floatValue1;
-//    }];
+
+
+	//用来把NSSting 转成 NSNumber
+	NSNumberFormatter* f = [NSNumberFormatter new];
+	f.numberStyle = NSNumberFormatterDecimalStyle;
+
+	NSArray* array6 = [array5 sortedArrayWithOptions:NSSortConcurrent usingComparator:^NSComparisonResult (id obj1, id obj2){
+	                           NSMutableArray* obj11 = obj1;
+	                           NSMutableArray* obj22 = obj2;
+	                           NSNumber* value1 = [f numberFromString:[obj11 objectAtIndex:3]];
+	                           NSNumber* value2 =  [f numberFromString:[obj22 objectAtIndex:3]];
+	                           return [value2 compare:value1];
+			   }];
+	array5 = [NSMutableArray arrayWithArray:array6];
+	[array5 insertObject:@[@"全　国",@"男比重",@"女比重",@"性别比"] atIndex:0];
 	for (int i = 0; i< array5.count; i++) {
 		NSLog(@"array5 %@", [array5[i] componentsJoinedByString:@"-"]);
 	}
@@ -143,14 +146,28 @@ void testArray(void){
 		NSLog(@"array4 %@", array4[i]);
 	}
 
+	float floatValue = 0;
+	NSLog(@"字符串转float %f", [@"1.1" floatValue]);
+
+
 	//arrayWithCapacity只是个参考值，并不是最后的数量
+	//
 	NSMutableArray* array5 = [NSMutableArray arrayWithCapacity:1];
 	[array5 addObject:@"我是个可变的一号"];
 	[array5 insertObject:@"我是可变的老板" atIndex:0];
+
+	//用NSNull来表示空的
+	[array5 addObject:[NSNull null]];
+
+	NSInteger valueInt = 123;
+	NSNumber* value1 = @1;
+	NSNumber* value2 = [NSNumber numberWithInteger:valueInt];
+	[array5 addObject:value1];
+	[array5 addObject:value2];
+
 	for (int i = 0; i< array5.count; i++) {
 		NSLog(@"array5 %@", array5[i]);
 	}
-
 
 }
 
